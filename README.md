@@ -40,6 +40,7 @@ Antes de qualquer coisa, para garantir o funcionamento, abra mais um terminal e 
 Execute os comandos:
 
 ```bash
+docker-compose exec web bundle exec rake db:drop
 docker-compose exec web bundle exec rake db:create
 docker-compose exec web bundle exec rake db:migrate
 docker-compose exec web bundle exec rake db:seed
