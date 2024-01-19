@@ -98,6 +98,11 @@ Os testes estão localizados nesta parte:
 
 ![RSpec Tests](https://github.com/Mathizzin/EmbarcaTesteMat/assets/115587512/012be588-c112-4676-aebf-56c133b11458)
 
+
+![image](https://github.com/Mathizzin/EmbarcaTesteMat/assets/115587512/50c3025c-23e4-40a3-ba4b-9c6deb947100)
+
+O teste vai apresentar alguns codigos html -> code 200, 302 -> significa que passou no teste.
+
 Com eles retornando sucesso, a parte de teste também está concluída.
 
 FRONTEND
