@@ -1,0 +1,39 @@
+<!-- app/views/estados/edit.html.erb -->
+
+<%= stylesheet_link_tag 'edit.estado', media: 'all' %>
+
+<h1>Edit Estado</h1>
+
+<%= form_for @estado, url: estado_path(@estado), method: :patch do |f| %>
+  <% if @estado.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estado.errors.count, "erro") %> impediram a atualização do estado:</h2>
+      <ul>
+        <% @estado.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %>
+    <%= f.text_field :nome %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sigla %>
+    <%= f.text_field :sigla %>
+  </div>
+
+  <div class="field">
+    <%= f.label :regiao %>
+    <%= f.text_field :regiao %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Atualizar Estado', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= link_to 'Voltar', estados_path, class: 'btn btn-secondary' %>

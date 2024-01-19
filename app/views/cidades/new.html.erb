@@ -1,0 +1,24 @@
+<%= form_with(model: @cidade, url: cidades_path, method: :post, local: true) do |form| %>
+  <%= form.hidden_field :estado_id, value: @estado_id if @estado_id.present? %>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome, placeholder: 'Nome da cidade', class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :populacao %>
+    <%= form.number_field :populacao, placeholder: 'População', class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :estado_id %>
+    <%= form.collection_select :estado_id, @estados, :id, :nome, prompt: 'Selecione um estado', id: 'estado-select', class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Criar Cidade', class: 'btn btn-primary', id: 'criar_cidade_btn' %>
+  </div>
+<% end %>
+
+<%= link_to 'Voltar para Cidades', :back, class: 'btn btn-secondary' %>

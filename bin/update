@@ -1,0 +1,52 @@
+#!/usr/bin/env ruby.exe
+# frozen_string_literal: true
+
+require 'fileutils'
+
+# This class encapsulates the update process for the application.
+class UpdateScript
+  include FileUtils
+
+  def initialize
+    @app_root = File.expand_path('..', __dir__)
+  end
+
+  # Run the update process.
+  def run
+    install_dependencies
+    update_database
+    remove_old_logs_and_tempfiles
+    restart_application_server
+  end
+
+  private
+
+  # Install necessary dependencies.
+  def install_dependencies
+    puts '== Installing dependencies =='
+    system! 'gem install bundler --conservative'
+    system('bundle check') || system!('bundle install')
+    # Install JavaScript dependencies if using Yarn
+    # system('bin/yarn')
+  end
+
+  # Update the database.
+  def update_database
+    puts "\n== Updating database =="
+    system! 'bin/rails db:migrate'
+  end
+
+  # Remove old logs and tempfiles.
+  def remove_old_logs_and_tempfiles
+    puts "\n== Removing old logs and tempfiles =="
+    system! 'bin/rails log:clear tmp:clear'
+  end
+
+  # Restart the application server.
+  def restart_application_server
+    puts "\n== Restarting application server =="
+    system! 'bin/rails restart'
+  end
+end
+
+UpdateScript.new.run if $PROGRAM_NAME == __FILE__

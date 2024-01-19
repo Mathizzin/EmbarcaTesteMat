@@ -1,0 +1,37 @@
+<!-- app/views/estados/new.html.erb -->
+
+<h1>Novo Estado</h1>
+
+<%= form_for @estado do |f| %>
+  <% if @estado.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estado.errors.count, "erro") %> impediram a criação do estado:</h2>
+      <ul>
+        <% @estado.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %>
+    <%= f.text_field :nome %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sigla %>
+    <%= f.text_field :sigla %>
+  </div>
+
+  <div class="field">
+    <%= f.label :regiao %>
+    <%= f.text_field :regiao %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Criar Estado' %>
+  </div>
+<% end %>
+
+<%= link_to 'Voltar', estados_path, class: 'btn btn-secondary' %>

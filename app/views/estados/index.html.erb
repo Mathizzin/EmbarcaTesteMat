@@ -1,0 +1,22 @@
+<div class="topnav">
+    <%= link_to 'Home', root_path, class: 'active' %>
+    <%= link_to 'Estados', estados_path %>
+    <%= link_to 'Cidades', cidades_path %>
+    <%= link_to 'Novo Estado', new_estado_path %>
+    <%= link_to 'Ver Cidades', estado_cidades_path(@estados.first), class: 'btn btn-primary' if @estados.any? %>
+</div>
+
+<div class="container">
+    <% @estados.each do |estado| %>
+      <div class="card">
+        <h2><%= estado.nome %></h2>
+        <p>Sigla: <%= estado.sigla %></p>
+        <p>Região: <%= estado.regiao %></p>
+
+        <%= link_to 'Editar', edit_estado_path(estado), class: 'btn btn-primary', id: "editar_estado_#{estado.id}" %>
+
+        <%= link_to 'Excluir', estado, method: :delete, data: { confirm: 'Você tem certeza ?' }, class: 'btn btn-danger', id: "excluir_estado_#{estado.id}" %>
+      </div>
+    <%end%>
+</div>
+

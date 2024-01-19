@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag 'edit.cidade', media: 'all' %>
+
+<%= form_with(model: @cidade, url: cidade_path(@cidade), method: :patch) do |form| %>
+  <% if @cidade.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cidade.errors.count, "erro") %> impediram a atualização da cidade:</h2>
+      <ul>
+        <% @cidade.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :estado_id %>
+    <%= form.collection_select :estado_id, Estado.all, :id, :nome, prompt: 'Selecione um estado' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Atualizar Cidade', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= link_to 'Voltar para Cidades', cidades_path, class: 'btn btn-secondary' %>

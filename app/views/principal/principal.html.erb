@@ -1,0 +1,50 @@
+<!-- app/views/principal/principal.html.erb -->
+<div class="topnav">
+    <%= link_to 'Home', root_path, class: 'active' %>
+    <%= link_to 'Estados', estados_path %>
+    <%= link_to 'Cidades', cidades_path %>
+</div>
+
+<div class="container-pesquisa">
+    <%= form_tag(principal_path, method: :get, class: 'form-inline') do %>
+        <div class="form-group">
+            <%= label_tag 'state', 'Selecione um Estado:', class: 'mr-2' %>
+            <%= select_tag 'state', options_from_collection_for_select(@estados, 'id', 'nome', @state), prompt: 'Todos', class: 'form-control mr-2' %>
+        </div>
+
+        <div class="form-group">
+            <%= label_tag 'name_part', 'nome', class: 'mr-2' %>
+            <%= text_field_tag 'name_part', @name_part, class: 'form-control mr-2' %>
+        </div>
+
+        <%= submit_tag 'Buscar', class: 'btn btn-primary' %>
+    <% end %>
+</div>
+
+
+<div class="container">
+    <div class="flex-container">
+        <% @estados.each do |estado| %>
+            <% estado_cidades = @cidades.select { |cidade| cidade.estado_id == estado.id } %>
+
+            <% if estado_cidades.present? %>
+                <div class="card">
+                    <h2>Informações do Estado <%= estado.nome %> <br>Estado Id = <%= estado.id %></h2>
+                    <p><b>Nome:</b> <%= estado.nome %>&nbsp<b>Sigla:</b> <%= estado.sigla %>&nbsp<b>Região:</b> <%= estado.regiao %></p>
+
+                    <div class="city-card-container">
+                       
+                        <% estado_cidades.each do |cidade| %>
+                            <div class="city-card">
+                                <h3><%= cidade.nome %></h3>
+                                <p>População: <%= cidade.populacao %></p>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>
+
+

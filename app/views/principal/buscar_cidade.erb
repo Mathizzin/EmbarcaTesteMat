@@ -1,0 +1,15 @@
+<!-- app/views/principal/buscar-cidade.html.erb -->
+
+<h1>Resultados da busca</h1>
+
+<% if @cidades.present? %>
+  <ul>
+    <% @cidades.each do |cidade| %>
+      <li><%= cidade.nome %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Nenhuma cidade encontrada.</p>
+<% end %>
+
+<%= link_to 'Voltar à página principal', principal_path %>

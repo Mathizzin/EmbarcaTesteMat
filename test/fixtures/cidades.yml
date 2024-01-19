@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  populacao: 1.5
+  capital: false
+  estado: one
+
+two:
+  nome: MyString
+  populacao: 1.5
+  capital: false
+  estado: two
