@@ -8,10 +8,6 @@ estado_sc = Estado.create(nome: 'Santa Catarina', sigla: 'SC', regiao: 'Sul')
 estado_rs = Estado.create(nome: 'Rio Grande do Sul', sigla: 'RS', regiao: 'Sul')
 
 # Create cities
-Cidade.create(nome: 'São Paulo', populacao: 12_345_678, estado: estado_sp)
-Cidade.create(nome: 'Campinas', populacao: 789_012, estado: estado_sp)
-Cidade.create(nome: 'Santos', populacao: 456_789, estado: estado_sp)
-
 Cidade.create(nome: 'Curitiba', populacao: 987_654, estado: estado_pr)
 Cidade.create(nome: 'Londrina', populacao: 543_210, estado: estado_pr)
 Cidade.create(nome: 'Maringá', populacao: 321_098, estado: estado_pr)
