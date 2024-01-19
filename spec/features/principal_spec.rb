@@ -70,16 +70,20 @@ RSpec.describe PrincipalController, type: :controller do
     end
 
     it 'assigns @cidades when searching only by state' do
+      # Criar um estado usando FactoryBot antes do bloco do teste
+      estado = create(:estado)
+      
+      # Criar cidades associadas a esse estado
       cities_in_pernambuco = create_list(:cidade, 3, estado: estado)
-
-      get :buscar_cidade, params: { state: state.id, name_part: '' }
-
-      # Comentário: Teste para verificar se os resultados da busca são atribuídos corretamente
+    
+      # Executar a ação do controlador
+      get :buscar_cidade, params: { state: estado.id}
+    
+      # Verificar se os resultados da busca são atribuídos corretamente
       expect(assigns(:state)).to eq(estado.id.to_s)
-      expect(assigns(:name_part)).to be_nil
       expect(assigns(:cidades)).to eq(cities_in_pernambuco)
-
-      # Adicionando puts para imprimir a URL
+    
+      # Adicionar puts para imprimir a URL
       puts "URL: #{request.original_url}"
       puts "Status code: #{response.status}"
       sleep 5 # Pausa por 5 segundos

@@ -3,7 +3,6 @@
 # db/seeds.rb
 
 # Create states
-estado_sp = Estado.create(nome: 'São Paulo', sigla: 'SP', regiao: 'Sudeste')
 estado_pr = Estado.create(nome: 'Paraná', sigla: 'PR', regiao: 'Sul')
 estado_sc = Estado.create(nome: 'Santa Catarina', sigla: 'SC', regiao: 'Sul')
 estado_rs = Estado.create(nome: 'Rio Grande do Sul', sigla: 'RS', regiao: 'Sul')
